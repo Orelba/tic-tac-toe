@@ -168,7 +168,7 @@ button:hover {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.85);
   top: 0;
   right: 0;
