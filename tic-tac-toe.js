@@ -45,12 +45,12 @@ const gameController = (() => {
   }
 
   const start = () => {
-    const PlayerXName = document.getElementById('player-name').value
-    const OpponentOName = document.getElementById('opponent-name').value
+    const playerXName = document.getElementById('player-name').value
+    const opponentOName = document.getElementById('opponent-name').value
 
     displayController.toggleOverlay()
 
-    setPlayerNames(PlayerXName, OpponentOName)
+    setPlayerNames(playerXName, opponentOName)
     displayController.renderNames()
     
     gameBoard.clear()
@@ -96,6 +96,14 @@ const gameController = (() => {
     }
   }
 
+  const goBack = () => {
+    if (_checkForWin() !== false || _checkForTie() === true) {
+      _checkForEndCondition()
+    } else {
+      displayController.toggleOverlay()
+    }
+  }
+
   const _checkForWin = () => {
     let winner = null
 
@@ -129,7 +137,7 @@ const gameController = (() => {
     let winner = "It's a tie"
     if (endCondition === 'win') winner = `${_checkForWin().name} wins!`
 
-    displayController.announceWinner(winner)
+    displayController.renderGameEndAnnouncement(winner)
   }
 
   const _appendMove = (player, index) => {
@@ -162,6 +170,7 @@ const gameController = (() => {
     start,
     restart,
     evaluate,
+    goBack,
     playerMove
   }
 })()
@@ -170,6 +179,7 @@ const displayController = (() => {
   const elFields = document.querySelectorAll('.field')
   const elStartBtn = document.querySelector('.start')
   const elRestartBtn = document.querySelector('.restart')
+  const elSettingsBtns = document.querySelectorAll('.settings-btn')
 
   const renderBoard = () => {
     const board1D = gameBoard.board.flat()
@@ -222,7 +232,8 @@ const displayController = (() => {
     elOverlay.classList.toggle('hidden')
   }
 
-  const announceWinner = (winner) => { 
+  const renderGameEndAnnouncement = (winner) => { 
+    const elOverlay = document.querySelector('.overlay')
     const elGameControls = document.querySelector('.game-controls')
     const elAnnounce = document.querySelector('.announce')
     const elAnnounceText = document.querySelector('.announce-text')
@@ -231,7 +242,39 @@ const displayController = (() => {
 
     elGameControls.classList.add('hidden')
     elAnnounce.classList.remove('hidden')
-    toggleOverlay()
+
+    elOverlay.classList.remove('hidden')
+  }
+
+  const _renderChangeWarning = () => {
+    const elChangeWarning = document.querySelector('.change-warning')
+    elChangeWarning.classList.remove('hidden')
+  }
+
+  const renderSettings = () => {
+    const elOverlay = document.querySelector('.overlay')
+    const elAnnounce = document.querySelector('.announce')
+    const elGameControls = document.querySelector('.game-controls')
+    const elGameControlsButtons = document.querySelector('.game-controls-buttons')
+    const playerXNameInput = document.getElementById('player-name')
+    const opponentONameInput = document.getElementById('opponent-name')
+
+    elAnnounce.classList.add('hidden')
+    elGameControls.classList.remove('hidden')
+    elStartBtn.innerHTML = 'Restart Game'
+
+    if (!document.querySelector('.go-back')) {
+      const btn = document.createElement('button')
+      btn.classList.add('go-back')
+      btn.innerHTML = 'Go Back'
+      elGameControlsButtons.appendChild(btn)
+      btn.addEventListener('click', gameController.goBack)
+
+      playerXNameInput.addEventListener('input', _renderChangeWarning)
+      opponentONameInput.addEventListener('input', _renderChangeWarning)
+    }
+
+    elOverlay.classList.remove('hidden')
   }
 
   const _init = (() => {
@@ -241,6 +284,7 @@ const displayController = (() => {
 
     elStartBtn.addEventListener('click', gameController.start)
     elRestartBtn.addEventListener('click', gameController.restart)
+    elSettingsBtns.forEach(btn => btn.addEventListener('click', renderSettings))
   })()
 
   return {
@@ -248,14 +292,10 @@ const displayController = (() => {
     renderNames,
     renderCurrentPlayerOutline,
     toggleOverlay,
-    announceWinner
+    renderGameEndAnnouncement,
+    renderSettings
   }
 })()
 
 // To do:
-// Settings button mid game
-// Settings button end game
-
-// Settings overlay
-
 // AI or Person
