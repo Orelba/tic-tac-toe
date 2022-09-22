@@ -413,19 +413,7 @@ footer a img:hover {
     gap: 5px;
   }
 
-  button {
-    width: max-content;
-  }
-
   .change-warning {
     bottom: 61px;
   }
-
-  .start,
-  .restart,
-  .go-back,
-  .settings-btn {
-    height: 45px;
-  }
-
 }
