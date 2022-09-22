@@ -299,3 +299,5 @@ const displayController = (() => {
 
 // To do:
 // AI or Person
+
+// make overlay buttons in mobile smaller and aligned to center

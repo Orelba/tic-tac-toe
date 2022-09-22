@@ -35,6 +35,7 @@ h1 {
   font-size: 2.8rem;
   margin-top: 70px;
   margin-bottom: 25px;
+  text-align: center;
 }
 
 .board-container,
@@ -42,6 +43,7 @@ h1 {
   background-color: rgba(0, 0, 0, 0.288);
   border-radius: 5px;
   width: var(--ui-size);;
+  flex-shrink: 0;
 }
 
 .current {
@@ -154,6 +156,7 @@ button {
   border: 2.5px solid white;
   border-radius: 16px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 button:hover {
@@ -188,6 +191,15 @@ button:hover {
   justify-content: center;
   gap: 20px;
   position: relative;
+}
+
+.game-controls-buttons,
+.announce-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 55px;
 }
 
 .hidden {
@@ -238,7 +250,6 @@ input[type="text"]:focus {
 .restart {
   height: 50px;
   width: 220px;
-  margin-top: 55px;
 }
 
 .go-back {
@@ -341,4 +352,80 @@ footer a img:hover {
   .settings-btn {
     height: 45px;
   }
+
+  .start,
+  .restart {
+    width: 180px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  :root {
+    --ui-size: 300px;
+  }
+
+  body { 
+    gap: 12px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  h2{
+    font-size: 1.5rem;
+  }
+
+  .player-container {
+    height: 35px;
+  }
+
+  .cell {
+    font-size: 0.85rem;
+  }
+
+  .board {
+    --field-size: 95px;
+  }
+
+  .x-sign * {
+    width: 90px;
+  }
+  
+  .circle {
+    --size: 70px;
+  }
+
+  .overlay h2 {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"]
+  h3 {
+    font-size: 1rem;
+  }
+
+  .game-controls-buttons,
+  .announce-buttons {
+    margin-top: 30px;
+    gap: 5px;
+  }
+
+  button {
+    width: max-content;
+  }
+
+  .change-warning {
+    bottom: 61px;
+  }
+
+  .start,
+  .restart,
+  .go-back,
+  .settings-btn {
+    height: 45px;
+  }
+
 }
