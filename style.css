@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'android_assassinitalic';
   src: url('fonts/androidassassinitalic-eddp-webfont.woff2') format('woff2'),
-       url('fonts/androidassassinitalic-eddp-webfont.woff') format('woff');
+    url('fonts/androidassassinitalic-eddp-webfont.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -13,9 +13,9 @@
 * {
   padding: 0;
   margin: 0;
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
-  box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -42,7 +42,7 @@ h1 {
 .player-container {
   background-color: rgba(0, 0, 0, 0.288);
   border-radius: 5px;
-  width: var(--ui-size);;
+  width: var(--ui-size);
   flex-shrink: 0;
 }
 
@@ -327,7 +327,7 @@ footer a img:hover {
     height: 4px;
     border-radius: 2.5px;
   }
-  
+
   .circle {
     --size: 85px;
     border: 4px solid white;
@@ -364,7 +364,7 @@ footer a img:hover {
     --ui-size: 300px;
   }
 
-  body { 
+  body {
     gap: 12px;
   }
 
@@ -374,7 +374,7 @@ footer a img:hover {
     margin-bottom: 10px;
   }
 
-  h2{
+  h2 {
     font-size: 1.5rem;
   }
 
@@ -393,7 +393,7 @@ footer a img:hover {
   .x-sign * {
     width: 90px;
   }
-  
+
   .circle {
     --size: 70px;
   }
@@ -402,8 +402,7 @@ footer a img:hover {
     font-size: 1.5rem;
   }
 
-  input[type="text"]
-  h3 {
+  input[type="text"] h3 {
     font-size: 1rem;
   }
 
