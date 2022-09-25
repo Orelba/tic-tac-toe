@@ -31,10 +31,10 @@ const gameController = (() => {
   const _getCurrentPlayer = () => _currentPlayer
 
   const _setCurrentPlayer = player => _currentPlayer = player
-  
+
   const getStartingPlayer = () => _startingPlayer
 
-  const _setStartingPlayer = player => _startingPlayer = player 
+  const _setStartingPlayer = player => _startingPlayer = player
 
   const togglePlayer = () => {
     if (_getCurrentPlayer() === playerX) _setCurrentPlayer(opponentO)
@@ -188,7 +188,7 @@ const gameController = (() => {
   const _PlayAiMove = (firstMove = false) => {
     let move = { row: -1, col: -1 }
 
-    if(!firstMove) move = aiLogic.findBestMove(gameBoard.board) // skip the slow AI algorithm for a speedy random start move.
+    if (!firstMove) move = aiLogic.findBestMove(gameBoard.board) // skip the slow AI algorithm for a speedy random start move.
 
     if (move.row === -1 || move.col === -1) move = _generateRandomMove()
     gameBoard.board[move.row][move.col] = 'o'

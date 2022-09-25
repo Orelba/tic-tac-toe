@@ -300,6 +300,7 @@ footer a img:hover {
   }
 
   body {
+    background-image: url(images/background_mobile.jpg);
     background-size: 750%;
   }
 
