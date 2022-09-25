@@ -1,7 +1,9 @@
 # tic-tac-toe
 A Tic-tac-toe JS Game App
 The game containes 2 game modes: 
+
 Player Vs. Player: Play with your friends!
+
 Player Vs. AI: Play against a smart artificial intelligence (Utilizing the Minimax Algorithm)
 
 
