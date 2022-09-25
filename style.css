@@ -299,6 +299,10 @@ footer a img:hover {
     --ui-size: 350px;
   }
 
+  body {
+    background-size: 750%;
+  }
+
   h1 {
     font-size: 2rem;
     margin-top: 30px;
