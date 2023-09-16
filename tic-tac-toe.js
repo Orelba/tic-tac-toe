@@ -28,6 +28,11 @@ const gameController = (() => {
   let _currentPlayer = null
   let _startingPlayer = null
 
+  const _sleepRandomTimeBetween = (minMs, maxMs) => {
+    const randomTimeMs = Math.floor(Math.random() * (maxMs - minMs + 1) + minMs)
+    return new Promise((resolve) => { setTimeout(resolve, randomTimeMs) })
+  }
+
   const _getCurrentPlayer = () => _currentPlayer
 
   const _setCurrentPlayer = player => _currentPlayer = player
@@ -199,13 +204,14 @@ const gameController = (() => {
     displayController.renderCurrentPlayerOutline(_getCurrentPlayer())
   }
 
-  const makeMove = (index) => {
+  const makeMove = async (index) => {
     if (_checkForEndCondition() === false) {
       if (!_isAiTurn()) {
         _appendPlayerMove(_getCurrentPlayer(), index)
         displayController.renderBoard(gameBoard.board)
         displayController.renderCurrentPlayerOutline(_getCurrentPlayer())
         if (_isAiTurn() && _checkForEndCondition() === false) {
+          await _sleepRandomTimeBetween(700, 1400)
           _PlayAiMove()
         }
         _checkForEndCondition()
